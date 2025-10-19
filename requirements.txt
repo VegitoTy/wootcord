@@ -2,3 +2,5 @@ flask
 dotenv
 celery
 "celery[redis]"
+
+discord
