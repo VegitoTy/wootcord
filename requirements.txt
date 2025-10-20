@@ -4,3 +4,4 @@ celery
 "celery[redis]"
 
 discord
+pydantic
