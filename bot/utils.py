@@ -10,7 +10,7 @@ async def store_mappings(conversation_id: int, thread_id: int):
     await redis_pool.set(cw_key, thread_id)
     await redis_pool.set(dc_key, conversation_id)
 
-    print("Stored mappings in Redis:", cw_key, "->", thread_id, ",", dc_key, "->", conversation_id)
+    print(f"Stored mappings in Redis: {cw_key} -> {thread_id}, {dc_key} -> {conversation_id}")
 
 async def delete_mappings(conversation_id: int, thread_id: int):
     cw_key = f"wootcord.cw_conv:{conversation_id}"
@@ -19,7 +19,7 @@ async def delete_mappings(conversation_id: int, thread_id: int):
     await redis_pool.delete(cw_key)
     await redis_pool.delete(dc_key)
 
-    print("Deleted mappings from Redis:", cw_key, "and", dc_key)
+    print(f"Deleted mappings from Redis: {cw_key} and {dc_key}")
 
 async def get_thread_id(conversation_id: int) -> int | None:
     cw_key = f"wootcord.cw_conv:{conversation_id}"
