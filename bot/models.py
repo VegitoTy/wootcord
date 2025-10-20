@@ -47,16 +47,16 @@ class Contact(BaseModel):
     Represents a contact in the system.
     """
     account: t.Optional[Account] = None
-    additional_attributes: AdditionalAttributes
+    additional_attributes: t.Optional[AdditionalAttributes] = None
     avatar: t.Optional[str] = None
-    custom_attributes: t.Dict[str, t.Any]
+    custom_attributes: t.Optional[t.Dict[str, t.Any]] = None
     email: t.Optional[str] = None
     id: int
     identifier: t.Optional[str] = None
     name: str
     phone_number: t.Optional[str] = None
     thumbnail: t.Optional[str] = None
-    blocked: bool
+    blocked: t.Optional[bool] = None
 
 class ChangedAttribute(BaseModel):
     """
@@ -198,16 +198,16 @@ class User(BaseModel):
     Represents a user in the system.
     """
     account: t.Optional[Account] = None
-    additional_attributes: AdditionalAttributes
+    additional_attributes: t.Optional[AdditionalAttributes] = None
     avatar: t.Optional[str] = None
-    custom_attributes: t.Dict[str, t.Any]
+    custom_attributes: t.Optional[t.Dict[str, t.Any]] = None
     email: t.Optional[str] = None
     id: int
     identifier: t.Optional[str] = None
     name: str
     phone_number: t.Optional[str] = None
-    thumbnail: str
-    blocked: bool
+    thumbnail: t.Optional[str] = None
+    blocked: t.Optional[bool] = None
     type: t.Optional[str] = None
     available_name: t.Optional[str] = None
     avatar_url: t.Optional[str] = None
