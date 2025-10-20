@@ -46,7 +46,7 @@ class Contact(BaseModel):
     """
     Represents a contact in the system.
     """
-    account: Account
+    account: t.Optional[Account] = None
     additional_attributes: AdditionalAttributes
     avatar: t.Optional[str] = None
     custom_attributes: t.Dict[str, t.Any]
@@ -197,9 +197,9 @@ class User(BaseModel):
     """
     Represents a user in the system.
     """
-    account: Account
+    account: t.Optional[Account] = None
     additional_attributes: AdditionalAttributes
-    avatar: str
+    avatar: t.Optional[str] = None
     custom_attributes: t.Dict[str, t.Any]
     email: t.Optional[str] = None
     id: int

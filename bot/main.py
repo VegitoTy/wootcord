@@ -12,7 +12,7 @@ from typing import override
 def queue_handler(self, data):
     try:
         loop = bot_instance.loop
-        asyncio.run_coroutine_threadsafe(dispatcher.dispatch(data), loop).result()
+        asyncio.run_coroutine_threadsafe(dispatcher.dispatch(bot_instance, data), loop).result()
     except Exception as e:
         print(f"({self.request.retries}/{self.max_retries}) An error occured while passing data to bot: {e}")
         raise self.retry(exc=e, countdown=2**self.request.retries, max_retries=3)
@@ -31,6 +31,7 @@ class Bot(commands.Bot):
      
 	async def on_ready(self):
 		print(f'Bot is ready. Logged in as {self.user.name}')
+		self.forum: discord.ForumChannel = await self.fetch_channel(config.forum_channel_id)
 
 	def run_celery_worker(self):
 		print("Celery worker thread is starting...")
