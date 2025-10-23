@@ -17,7 +17,7 @@ def queue_handler(self, data):
         print(f"({self.request.retries}/{self.max_retries}) An error occured while passing data to bot: {e}")
         raise self.retry(exc=e, countdown=2**self.request.retries, max_retries=3)
 
-class Bot(commands.Bot):
+class wootcord(commands.Bot):
 	def __init__(self):
 		super().__init__(
                command_prefix=self.determine_prefix,
@@ -54,5 +54,5 @@ class Bot(commands.Bot):
 		await celery_worker
 
 if __name__ == '__main__':
-	bot_instance = Bot()
+	bot_instance = wootcord()
 	asyncio.run(bot_instance.start())
