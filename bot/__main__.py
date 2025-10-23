@@ -1,11 +1,11 @@
 import asyncio
 
-import config
+from . import config
 import discord
 
 from discord.ext import commands
-from handlers import dispatcher 
-from tasks import queue
+from .handlers import dispatcher 
+from .tasks import queue
 from typing import override
 
 @queue.task(name=config.task_name, bind=True)
